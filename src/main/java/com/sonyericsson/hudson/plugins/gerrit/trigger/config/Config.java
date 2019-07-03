@@ -314,29 +314,11 @@ public class Config implements IGerritHudsonTriggerConfig {
         if(categories == null)
             categories = new ArrayList<VerdictCategory>();
 
-        if(allCategoriesHaveNullReportingValues(categories)) {
-            categories.remove(getVerdictCategory(CODE_REVIEW));
-            categories.remove(getVerdictCategory(VERIFIED));
-        }
-
         for (VerdictCategory category : defaultCategories) {
             if (!categories.contains(category)) {
                 categories.add(category);
             }
         }
-    }
-
-    private boolean allCategoriesHaveNullReportingValues(List<VerdictCategory> categories) {
-        for (VerdictCategory cat : categories) {
-            if(cat.getDefaultBuildStartedReportingValue() != null
-                || cat.getDefaultBuildSuccessfulReportingValue() != null
-                || cat.getDefaultBuildFailedReportingValue() != null
-                || cat.getDefaultBuildUnstableReportingValue() != null
-                || cat.getDefaultBuildNotBuiltReportingValue() != null) {
-                return false;
-            }
-        }
-        return true;
     }
 
     private VerdictCategory getCodeReviewCategory() {
