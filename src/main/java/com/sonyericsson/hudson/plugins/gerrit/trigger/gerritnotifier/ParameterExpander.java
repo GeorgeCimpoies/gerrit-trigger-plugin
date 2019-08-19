@@ -290,8 +290,8 @@ public class ParameterExpander {
     }
 
     private Map<String, String> createStandardParameters(Run r, GerritTriggeredEvent gerritEvent, Map<String, Integer> labelVotes, String notifyLevel) {
-        int codeReviewValue = 0;
-        int verifiedValue = 0;
+        Integer codeReviewValue = 0;
+        Integer verifiedValue = 0;
 
         if(labelVotes.containsKey(CODE_REVIEW))
             codeReviewValue = labelVotes.get(CODE_REVIEW);
